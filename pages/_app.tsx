@@ -1,12 +1,11 @@
-import '../styles/globals.css';
-import type {AppProps} from 'next/app';
 import {Roboto} from '@next/font/google';
 import {Provider} from 'react-redux';
+import '../styles/globals.css';
 
-import {store} from '../redux/store';
 import {AppWrapper} from '../components';
+import type {AppAllProps, AppData, SettingsType} from '../interfaces';
+import {store} from '../redux/store';
 import {fetchAppSettings} from '../utils';
-import type {SettingsType, AppAllProps, AppData} from '../interfaces';
 
 const roboto = Roboto({
 	subsets: ['latin'],
@@ -15,7 +14,6 @@ const roboto = Roboto({
 });
 
 let initData: AppData[] = [];
-
 export default function App({Component, pageProps, stars}: AppAllProps) {
 	return (
 		<Provider store={store}>

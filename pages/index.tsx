@@ -1,10 +1,20 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import {Inter} from '@next/font/google';
-import styles from '../styles/Home.module.css';
+import {HeroImageCarousel} from '../components';
+import Layout from '../components/Layout';
+import type {HomeHeroImagesType, HomePageProps} from '../interfaces';
+import {fetchHomeHeroImages} from '../utils';
 
-const inter = Inter({subsets: ['latin']});
+export async function getServerSideProps() {
+	const images: HomeHeroImagesType[] = await fetchHomeHeroImages();
+	return {
+		props: {images},
+	};
+}
 
-export default function Home() {
-	return <div className="text-3xl">test</div>;
+export default function Home(porps: HomePageProps) {
+	return (
+		<Layout title="home" brandName="Pollux">
+			Hero iamges
+			<HeroImageCarousel images={porps.images} />
+		</Layout>
+	);
 }
