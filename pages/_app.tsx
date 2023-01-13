@@ -6,18 +6,13 @@ import {Provider} from 'react-redux';
 import {store} from '../redux/store';
 import {AppWrapper} from '../components';
 import {fetchAppSettings} from '../utils';
-import type {SettingsType, AppAllProps} from '../interfaces';
+import type {SettingsType, AppAllProps, AppData} from '../interfaces';
 
 const roboto = Roboto({
 	subsets: ['latin'],
 	weight: ['400', '700'],
 	variable: '--font-roboto',
 });
-type AppData = {
-	_id: string;
-	key: string;
-	value: string;
-};
 
 let initData: AppData[] = [];
 

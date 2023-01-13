@@ -1,6 +1,12 @@
 import React, {ReactNode} from 'react';
 import type {AppProps} from 'next/app';
 
+export type AppData = {
+	_id: string;
+	key: string;
+	value: string;
+};
+
 export type SettingsType = Record<
 	string,
 	{_id: string; key: string; value: string}

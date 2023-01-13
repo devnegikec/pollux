@@ -1,1 +1,1 @@
-export * from './appwrapper.interface';
+export * from './app.interface';
