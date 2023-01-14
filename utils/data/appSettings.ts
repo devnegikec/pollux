@@ -1,3 +1,4 @@
+import fetch from 'cross-fetch';
 import type {AppData} from '../../interfaces';
 
 export const fetchAppSettings = async (): Promise<AppData[]> => {

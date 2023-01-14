@@ -1,3 +1,4 @@
+import fetch from 'cross-fetch';
 import type {HomeHeroImagesType} from '../../interfaces';
 
 export const fetchHomeHeroImages = async (): Promise<HomeHeroImagesType[]> => {
