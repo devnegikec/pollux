@@ -12,6 +12,8 @@ export function HeroImageCard(props: HeroImageCardProps) {
 			<Image
 				src={getImageUrl(image[0]).url()}
 				alt={name}
+				width={500}
+				height={500}
 				className="w-screen transform transition scale-125 duration-500"
 			/>
 			<div className="absolute top-1/4 p-20 text-white">

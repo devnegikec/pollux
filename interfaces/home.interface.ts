@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 
-export default interface Asset {
+export interface Asset {
 	_ref: string;
 	_type: string;
 }

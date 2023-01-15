@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
-import type {PayloadAction} from '@reduxjs/toolkit';
 import {RootState} from './store';
-type SettingsType = Record<string, {_id: string; key: string; value: string}>;
+
+import type {SettingsType} from '../interfaces';
 
 const initialState: SettingsType = {};
 

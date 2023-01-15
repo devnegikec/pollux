@@ -7,7 +7,7 @@ function Layout({title, brandName, children}: LayoutProps) {
 	return (
 		<>
 			<Head>
-				<title>{title ? `title +  - ${brandName}` : brandName}</title>
+				<title>{title ? `${title} - ${brandName}` : brandName}</title>
 				<meta name="description" content="Ecommerce Website" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
