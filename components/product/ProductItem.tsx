@@ -14,6 +14,8 @@ export function ProductItem({product}: ProductItemPropsType) {
 							className="h-70 rounded-2xl w-full object-cover"
 							src={getImageUrl(product?.image[0])?.url()}
 							alt={product.name}
+							width={500}
+							height={500}
 						/>
 					) : null}
 				</Link>
