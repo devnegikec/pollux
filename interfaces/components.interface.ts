@@ -1,5 +1,8 @@
 import React, {ReactNode} from 'react';
-import type {ProductType} from './productComponents.interface';
+import type {
+	ProductDetailType,
+	ProductType,
+} from './productComponents.interface';
 
 export interface LayoutProps extends React.HTMLProps<any> {
 	title: string;
@@ -30,5 +33,15 @@ export interface ProductContainerPropsType extends React.HTMLProps<any> {
 
 export interface ProductItemPropsType extends React.HTMLProps<any> {
 	product: ProductType;
+	children?: ReactNode;
+}
+
+export interface ProductPagePropsType extends React.HTMLProps<any> {
+	product: ProductDetailType;
+	children?: ReactNode;
+}
+
+export interface ProductDetailPagePropsType extends React.HTMLProps<any> {
+	product: ProductDetailType;
 	children?: ReactNode;
 }

@@ -7,9 +7,17 @@ import Link from 'next/link';
 import {useEffect, useState} from 'react';
 
 import type {DesktopHeaderProps} from '../../interfaces';
+import {Cart} from '../cart';
 
 export function DesktopHeader({brandName, itemInCart}: DesktopHeaderProps) {
 	const [offset, setOffset] = useState(0);
+	const [showCart, setShowCart] = useState(false);
+
+	const handleCartView = (e) => {
+		e.preventDefault();
+		setShowCart((prev) => !prev);
+	};
+
 	const mainDiv =
 		offset > 350
 			? 'flex fixed pl-10 pr-10 pt-3 pb-3 w-screen z-50 bg-white transition ease-in duration-500 shadow-lg'
@@ -36,6 +44,9 @@ export function DesktopHeader({brandName, itemInCart}: DesktopHeaderProps) {
 							<ul className="flex justify-between hover:bottom-1 ">
 								<li className="header-menu-link">
 									<Link href="/">Home</Link>
+								</li>
+								<li className="header-menu-link">
+									<Link href="/collections/all">All</Link>
 								</li>
 								<li className="header-menu-link">
 									<Link href="/">Infent</Link>
@@ -72,12 +83,13 @@ export function DesktopHeader({brandName, itemInCart}: DesktopHeaderProps) {
 						<span className="relative text-[12px] left-10 top-3 font-bold bg-yellow-200 rounded-full pr-2 pl-2 pt-1 pb-1">
 							{itemInCart}
 						</span>
-						<Link href="/cart">
+						<Link href="#" onClick={handleCartView}>
 							<ShoppingBagIcon className="w-6 h-6" />
 						</Link>
 					</div>
 				</div>
 			</div>
+			{showCart ? <Cart setShowCart={setShowCart} /> : null}
 		</header>
 	);
 }

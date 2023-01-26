@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 
 import {ProductContainer} from '../../components';
 import Layout from '../../components/Layout';
@@ -20,11 +20,11 @@ export default function All({products}: CollectionPropsType) {
 
 	const {loading, error} = state;
 
-	useEffect(() => {
-		if (products.length > 0) {
-			setState({...state, loading: false});
-		}
-	}, [products, state]);
+	// useEffect(() => {
+	// 	if (products.length > 0) {
+	// 		setState({...state, loading: false});
+	// 	}
+	// }, [products, state]);
 	return (
 		<Layout title="All Products" brandName="Pollux">
 			{loading ? (

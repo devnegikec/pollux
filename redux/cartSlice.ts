@@ -5,49 +5,55 @@ import {RootState} from './store';
 type Product = {
 	_id: string;
 	price: number;
+	quantity: number;
 };
 
-type CartState = Product[];
-
-const initialState: CartState = [];
+export interface CartState {
+	items: Product[];
+}
+const initialState: CartState = {
+	items: [],
+};
 
 export const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
 	reducers: {
-		addToBasket: (state, action) => {
-			state = [...state, action.payload];
+		addToCart: (state, action) => {
+			state.items = [...state.items, action.payload];
 		},
-		removeFromBasket: (
-			state: CartState,
-			action: PayloadAction<{id: string}>,
-		) => {
-			const index = state.findIndex((item) => item._id === action.payload.id);
-			let newBasket = [...state];
+		removeFromCart: (state: CartState, action: PayloadAction<{id: string}>) => {
+			const index = state.items.findIndex(
+				(item) => item._id === action.payload.id,
+			);
+			let newCart = [...state.items];
 
 			if (index >= 0) {
-				newBasket.splice(index, 1);
+				newCart.splice(index, 1);
 				if (index >= 0) {
-					newBasket.splice(index, 1);
+					newCart.splice(index, 1);
 				} else {
 					console.log(
 						`Can't remvoe product (id:${action.payload.id}) as its not in basket!`,
 					);
 				}
-				state = newBasket;
+				state.items = newCart;
 			}
 		},
 	},
 });
 
 // Action creators are generated for each case reducer function
-export const {addToBasket, removeFromBasket} = cartSlice.actions;
+export const {addToCart, removeFromCart} = cartSlice.actions;
 
 //selectors
-export const selectBasketItems = (state: RootState) => state.cart;
-export const selectBasketItemsWithId = (state: RootState, id: string) => {
-	state.cart.filter((item: Product) => item._id === id);
+export const selectCartItems = (state: RootState) => state.cart.items;
+export const selectCartItemsWithId = (state: RootState, id: string) => {
+	state.cart.items.filter((item: Product) => item._id === id);
 };
-export const selectBasketTotal = (state: RootState) =>
-	state.cart.reduce((total: number, item: Product) => (total += item.price), 0);
+export const selectCartotal = (state: RootState) =>
+	state.cart.items.reduce(
+		(total: number, item: Product) => (total += item.price),
+		0,
+	);
 export default cartSlice.reducer;

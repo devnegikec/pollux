@@ -28,3 +28,36 @@ export interface ProductType {
 	vendor: VendorType;
 	image: ProductImageT[];
 }
+export interface VariantsValueType {
+	_key: string;
+	_type: string;
+	key: string;
+	value: string;
+}
+
+export interface VariantType {
+	_id: string;
+	title: string;
+	price: number;
+	costperitem: number;
+	comparePrice: number;
+	quantity: number;
+	sku: string;
+	barcode: string;
+	variants: VariantsValueType[];
+}
+
+export interface ProductDetailType {
+	_id: string;
+	name: string;
+	price: number;
+	details: string;
+	slug: string;
+	status: string;
+	inventory: number;
+	vendor: VendorType;
+	tax: number;
+	isdiscount: boolean;
+	image: ProductImageT[];
+	variant: VariantType[];
+}

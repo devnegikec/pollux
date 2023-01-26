@@ -13,7 +13,6 @@ export async function getServerSideProps() {
 export default function Home(porps: HomePageProps) {
 	return (
 		<Layout title="home" brandName="Pollux">
-			Hero iamges
 			<HeroImageCarousel images={porps.images} />
 		</Layout>
 	);
